@@ -33,21 +33,21 @@ public class Main2Activity extends AppCompatActivity {
         String itemList[]={};
         try {
             FileInputStream fileIn = openFileInput(FILENAME);
-            //     InputStreamReader InputRead= new InputStreamReader(fileIn);
-//
-            //      char[] inputBuffer= new char[READ_BLOCK_SIZE];
+               InputStreamReader InputRead= new InputStreamReader(fileIn);
+
+               char[] inputBuffer= new char[READ_BLOCK_SIZE];
             String s = "";
-            //     int charRead;
+                int charRead;
 
-            //     while ((charRead=InputRead.read(inputBuffer))>0) {
+                 while ((charRead=InputRead.read(inputBuffer))>0) {
             // char to string conversion
-            //         String readstring=String.copyValueOf(inputBuffer,0,charRead);
-            //      s+=readstring;
+                     String readstring=String.copyValueOf(inputBuffer,0,charRead);
+            s+=readstring;
             int c = fileIn.read();
-         String temp = "";
-                 temp = temp + Character.toString((char)c);
+   //      String temp = "";
+    //             temp = temp + Character.toString((char)c);
 
-            itemList = temp.split("\n");
+            itemList = s.split ("\n");
             CheckBox check1 = (CheckBox) findViewById(R.id.checkBox);
             check1.setText(itemList[0]);
             CheckBox check2 = (CheckBox) findViewById(R.id.checkBox);
@@ -64,8 +64,8 @@ public class Main2Activity extends AppCompatActivity {
             check7.setText(itemList[6]);
             CheckBox check8 = (CheckBox) findViewById(R.id.checkBox);
             check8.setText(itemList[7]);
-        //}
-          //  InputRead.close();
+        }
+            InputRead.close();
 
         } catch(Exception e) {
             e.printStackTrace();
